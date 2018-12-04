@@ -1,2 +1,0 @@
-new file in master branch
-100*100= 10000
