@@ -1,0 +1,40 @@
+本地仓库：
+git add *
+
+git commit -m ‘add file’
+
+打印一些branch的sha1码 用于版本回滚之类的操作
+git log/git reflog/git log --pretty=oneline 
+
+版本回滚
+git reset --hard 121342343/git reset --hard HEAD^
+
+把f1.txt的修改放弃 gitcheck -- 相当于把当前工作区的文件恢复到仓库对应文件或者已经提交到暂存区的文件
+git checkout -- f1.txt 
+
+放弃暂存区某个文件的提交
+git reset HEAD f1.txt
+再使用git checkout -- f1.txt可以恢复发f1.txt
+也可以使用 git reset --hard 1213213强制当前版本回滚 可是这样就不仅仅是当前文件回滚了 而是整个回滚
+
+远程仓库：
+******先有本地库 后有远程库******
+1、在github注册账号 查看本地公钥和私钥
+2、在github上把自己的公钥添加进去，方便以后的推送
+3、在github上创建新的仓库，然后在你想要使用的本地仓库界面用git命令
+	git remote add origin git@server-name:path/repo-name.git
+	命令 直接在github上关联你的本地仓库有
+4、关联后，使用命令git push -u origin master第一次推送master分支的所有内容
+5、此后，每次本地提交后，只要有必要，就可以使用命令git push origin master 推送最新修改
+
+******先有远程库 后有本地库******
+1、在github上创建新仓库时勾选Initialize this repository with a README
+2、在本地某个目录下使用git clone git@github.com:michaelliao/gitskills.git命令就克隆下来了
+
+分支
+平行宇宙的概念
+HEAD指向 ‘最新提交所在分支 的指针’
+Git创建分支：
+1、在master分支指针，新增一个指针dev，改变HEAD的指向，相当于新增了一个指针而已
+Git合并分支：
+把master指针指向dev指针当前的提交
